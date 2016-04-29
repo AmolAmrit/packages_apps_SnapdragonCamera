@@ -353,8 +353,10 @@ public class PhotoUI implements PieListener,
         mMenuHelp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mMenuHelp.setVisibility(View.GONE);
-                mMenuHelp = null;
+                if (mMenuHelp != null) {
+                    mMenuHelp.setVisibility(View.GONE);
+                    mMenuHelp = null;
+                }
             }
         });
     }
