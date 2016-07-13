@@ -187,7 +187,8 @@ public class PhotoMenu extends MenuController
                 CameraSettings.KEY_EXPOSURE,
                 CameraSettings.KEY_WHITE_BALANCE,
                 CameraSettings.KEY_QC_CHROMA_FLASH,
-                CameraSettings.KEY_REDEYE_REDUCTION
+                CameraSettings.KEY_REDEYE_REDUCTION,
+                CameraSettings.KEY_SELFIE_MIRROR
         };
 
         mOtherKeys2 = new String[] {
@@ -228,7 +229,8 @@ public class PhotoMenu extends MenuController
                 CameraSettings.KEY_AE_BRACKET_HDR,
                 CameraSettings.KEY_MANUAL_EXPOSURE,
                 CameraSettings.KEY_MANUAL_WB,
-                CameraSettings.KEY_MANUAL_FOCUS
+                CameraSettings.KEY_MANUAL_FOCUS,
+                CameraSettings.KEY_SELFIE_MIRROR
         };
 
         initSwitchItem(CameraSettings.KEY_CAMERA_ID, mFrontBackSwitcher);
