@@ -2189,6 +2189,7 @@ public class PhotoModule
     public synchronized void onShutterButtonClick() {
         if ((mCameraDevice == null)
                 || mPaused || mUI.collapseCameraControls()
+                || !mUI.mMenuInitialized
                 || (mCameraState == SWITCHING_CAMERA)
                 || (mCameraState == PREVIEW_STOPPED)
                 || (mCameraState == LONGSHOT)
