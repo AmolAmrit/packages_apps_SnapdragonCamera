@@ -774,4 +774,8 @@ CHAR LIMIT = NONE] -->
     <string name="overflow_best_item2">Delete All</string>
 
     <string name="settings_title">Settings</string>
+
+    <!-- Grid -->
+    <string name="pref_grid_title">Grid</string>
+    <string name="pref_grid_default" translatable="false">off</string>
  </resources>
