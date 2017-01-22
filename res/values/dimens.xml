@@ -183,4 +183,7 @@
 
     <dimen name="one_ui_bottom_large">75dp</dimen>
     <dimen name="one_ui_bottom_small">55dp</dimen>
+
+    <!-- Grid -->
+    <dimen name="grid_line_width">1dp</dimen>
 </resources>

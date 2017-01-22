@@ -99,5 +99,8 @@
     <color name="dialog_button">#008B8B</color>
     <color name="dialog_hr">#C4C4C4</color>
 
+    <!-- Grid -->
+    <color name="grid_line">#33FFFFFF</color>
+    
     <color name="background_color">#00000000</color>
 </resources>

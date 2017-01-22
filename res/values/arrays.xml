@@ -697,4 +697,15 @@
         <item>270</item>
     </string-array>
 
+    <!-- Grid -->
+    <string-array name="pref_switch_entryvalues" translatable="false">
+        <item>off</item>
+        <item>on</item>
+    </string-array>
+
+    <array name="pref_switch_entries" translatable="false">
+        <item>@string/setting_off</item>
+        <item>@string/setting_on</item>
+    </array>
+
 </resources>
