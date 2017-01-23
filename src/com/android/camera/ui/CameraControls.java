@@ -18,14 +18,14 @@ package com.android.camera.ui;
 
 import android.animation.Animator;
 import android.animation.Animator.AnimatorListener;
+import android.animation.ValueAnimator;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.drawable.AnimationDrawable;
 import android.graphics.Paint;
-import android.graphics.Rect;
-import android.graphics.Paint;
 import android.graphics.Path;
+import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.Gravity;
@@ -105,6 +105,10 @@ public class CameraControls extends RotatableLayout {
 
     private static final int LOW_REMAINING_PHOTOS = 20;
     private static final int HIGH_REMAINING_PHOTOS = 1000000;
+    private static final int BACKGROUND_ALPHA = (int) (0.6f * 255);
+
+    private ValueAnimator mFadeAnimator;
+    private float mFadeFraction = 0f;
 
     AnimatorListener outlistener = new AnimatorListener() {
         @Override
@@ -207,6 +211,9 @@ public class CameraControls extends RotatableLayout {
         setClipChildren(false);
 
         setMeasureAllChildren(true);
+
+        mFadeAnimator = ValueAnimator.ofFloat(0.0f, 1.0f);
+        mFadeAnimator.addUpdateListener(mFadeAnimatorListener);
     }
 
     public CameraControls(Context context) {
@@ -375,6 +382,15 @@ public class CameraControls extends RotatableLayout {
                     break;
             }
         }
+        setBackgroundAlpha((int) (BACKGROUND_ALPHA * mFadeFraction));
+    }
+
+    private void setBackgroundAlpha(int backgroundAlpha) {
+        int backgroundColor = getResources().getColor(R.color.background_color);
+        backgroundAlpha = backgroundAlpha & 0xFF;
+        backgroundColor = backgroundColor & 0xFFFFFF;
+        backgroundColor = backgroundColor | (backgroundAlpha << 24);
+        setBackgroundColor(backgroundColor);
     }
 
     private void setLocation(int w, int h) {
@@ -532,6 +548,7 @@ public class CameraControls extends RotatableLayout {
     }
 
     public void hideUI() {
+        mFadeAnimator.start();
         if(!isAnimating)
             enableTouch(false);
         isAnimating = true;
@@ -639,6 +656,7 @@ public class CameraControls extends RotatableLayout {
     }
 
     public void showUI() {
+        mFadeAnimator.reverse();
         if(!isAnimating)
             enableTouch(false);
         isAnimating = true;
@@ -1066,6 +1084,15 @@ public class CameraControls extends RotatableLayout {
         mRemainingPhotos.setVisibility(View.GONE);
         mRemainingPhotosText.setVisibility(View.GONE);
     }
+
+    private final ValueAnimator.AnimatorUpdateListener mFadeAnimatorListener =
+            new ValueAnimator.AnimatorUpdateListener() {
+        @Override
+        public void onAnimationUpdate(ValueAnimator animation) {
+            mFadeFraction = (Float) animation.getAnimatedValue();
+            invalidate();
+        }
+    };
 
     private class ArrowTextView extends TextView {
         private static final int TEXT_SIZE = 14;
