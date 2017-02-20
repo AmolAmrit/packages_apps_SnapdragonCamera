@@ -24,7 +24,7 @@ public class MosaicRenderer
 {
      static
      {
-         System.loadLibrary("jni_snapmosaic");
+         System.loadLibrary("jni_snapcammosaic");
      }
 
      /**
