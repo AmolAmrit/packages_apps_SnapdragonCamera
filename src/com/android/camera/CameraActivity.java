@@ -1844,6 +1844,9 @@ public class CameraActivity extends Activity
         if (mDataAdapter != null) {
             mDataAdapter.stopLoading();
         }
+        if (mCaptureModule != null){
+            mCaptureModule.unRegisterSettingsListener();
+        }
         super.onDestroy();
     }
 
